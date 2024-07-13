@@ -18,8 +18,18 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+	// spring-web, spring-webmvc, jackson-databind, tomcat-embed-core
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// spring-data-jpa, hibernate-core, jakarta.persistence-api
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// PostgreSQL, MySQL, Oracle, SQLServer
+	runtimeOnly 'com.h2database:h2'
+
+	// JUnit 5, Assertj, Hamcrest, Mockito
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
