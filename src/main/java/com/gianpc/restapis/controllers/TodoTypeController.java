@@ -37,7 +37,7 @@ public class TodoTypeController{
         return todoType;
     }
 
-    @PostMapping( value = "/create", consumes = {"application/json", "application/xml"})
+    @PostMapping( value = "/create", produces = {"application/json", "application/xml"})
     public TodoType createTodoType(){
         TodoType todoType = new TodoType();
         todoType.setCode("PROFESSIONAL");
@@ -50,7 +50,7 @@ public class TodoTypeController{
         return todoTypeService.create(todoType);
     }
 
-    @GetMapping(value = "/{code}", produces = {"application/xml"})
+    @GetMapping(value = "/{code}", produces = {"application/xml"}) // Este solo produce xml, por lo tanto debemos agregar una anotación @XmlRootElement al TodoType
     public TodoType read(@PathVariable("code") String code){
         TodoType todoType = todoTypeService.findByCode(code);
         return todoType;

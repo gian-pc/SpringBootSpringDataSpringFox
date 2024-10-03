@@ -30,6 +30,10 @@ dependencies {
 	// lombok
 	compileOnly('org.projectlombok:lombok')
 	annotationProcessor('org.projectlombok:lombok')
+
+	// Xml
+	implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
+
 	// JUnit 5, Assertj, Hamcrest, Mockito
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
