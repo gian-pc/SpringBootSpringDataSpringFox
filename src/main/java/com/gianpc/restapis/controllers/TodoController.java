@@ -1,7 +1,6 @@
 package com.gianpc.restapis.controllers;
 
 import com.gianpc.restapis.domains.Todo;
-import com.gianpc.restapis.domains.TodoType;
 import com.gianpc.restapis.services.TodoService;
 import com.gianpc.restapis.services.TodoTypeService;
 import org.springframework.beans.factory.annotation.Autowired;

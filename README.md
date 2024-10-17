@@ -5,3 +5,6 @@
 2. Estructura de carpetas, dependencias para APIs y RestapisApplication
 3. Desarrollar los POJOS(Plain Old Java Object)
 4. REST APIs
+
+## Clase 02
+1. Configuración H2
