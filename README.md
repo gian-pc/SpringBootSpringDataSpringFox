@@ -8,3 +8,5 @@
 
 ## Clase 02
 1. Configuración H2
+2. De Clase a Entidades
+3. Implementación de las interfaces
