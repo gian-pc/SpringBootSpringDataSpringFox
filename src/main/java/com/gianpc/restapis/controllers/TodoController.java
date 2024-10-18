@@ -21,9 +21,8 @@ public class TodoController {
         this.todoTypeService = todoTypeService;
     }
 
-    // Spring MVC implementa todas estas anotaciones para hacer el CRUD de un Tod0
     @PostMapping
-    public Todo create(@RequestBody Todo todo){ // lo que viene en el body de la peticion se mapea a un objeto Todo
+    public Todo create(@RequestBody Todo todo){
         return todoService.create(todo);
     }
 
@@ -46,5 +45,4 @@ public class TodoController {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
-
 }
