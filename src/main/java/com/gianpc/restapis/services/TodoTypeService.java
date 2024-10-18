@@ -1,16 +1,22 @@
 package com.gianpc.restapis.services;
 
-
 import com.gianpc.restapis.domains.TodoType;
+import com.gianpc.restapis.repositories.TodoTypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class TodoTypeService {
-    private static Map<String, TodoType> todoTypeCollection = new HashMap<>();
+
+    private TodoTypeRepository todoTypeRepository;
+
+    // Inyección por constructor
+    @Autowired
+    public TodoTypeService(TodoTypeRepository todoTypeRepository) {
+        this.todoTypeRepository = todoTypeRepository;
+    }
 
     public TodoType create(TodoType todoType){
         todoTypeCollection.put(todoType.getCode(), todoType);

@@ -10,15 +10,7 @@ import java.util.Date;
 @Service // proveernos una instancia SINGLETON de esta clase
 public class TodoService {
 
-    // Field
-    @Autowired
     private TodoRepository todoRepository;
-
-    // Setter
-    @Autowired
-    public void setTodoRepository(TodoRepository todoRepository) {
-        this.todoRepository = todoRepository;
-    }
 
     // Constructor
     @Autowired
