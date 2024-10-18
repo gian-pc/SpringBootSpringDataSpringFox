@@ -3,9 +3,11 @@ package com.gianpc.restapis.services;
 import com.gianpc.restapis.domains.Todo;
 import com.gianpc.restapis.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service // proveernos una instancia SINGLETON de esta clase
@@ -47,5 +49,11 @@ public class TodoService {
             throw new Exception("No existe ese Id");
         }
         todoRepository.deleteById(id);
+    }
+
+    // Buscar todos pero con ordenamiento
+    public List<Todo> findAll(){
+        Sort idDesc = Sort.by(Sort.Direction.DESC, "id");
+        return (List<Todo>) todoRepository.findAll(idDesc);
     }
 }

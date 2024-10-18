@@ -13,3 +13,4 @@
    - Implementación de las interfaces
    - Implementación de los servicios
 5. Finders - JPA
+6. Paginación y Ordenamiento
