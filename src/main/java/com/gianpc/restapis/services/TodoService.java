@@ -1,19 +1,30 @@
 package com.gianpc.restapis.services;
 
 import com.gianpc.restapis.domains.Todo;
+import com.gianpc.restapis.repositories.TodoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service // proveernos una instancia SINGLETON de esta clase
 public class TodoService {
 
-    // Creamos un map para guardar los todos
-    private static Map<Long, Todo> todoCollection = new HashMap<>();
+    // Field
+    @Autowired
+    private TodoRepository todoRepository;
 
-    private static long idCount = 1L;
+    // Setter
+    @Autowired
+    public void setTodoRepository(TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
+    }
+
+    // Constructor
+    @Autowired
+    public TodoService(TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
+    }
 
     public Todo create(Todo todo) {
         todo.setId(idCount);
