@@ -1,6 +1,5 @@
 package com.gianpc.restapis.services;
 
-import com.gianpc.restapis.domains.Todo;
 import com.gianpc.restapis.domains.TodoType;
 import com.gianpc.restapis.repositories.TodoTypeRepository;
 import jakarta.validation.ConstraintViolation;

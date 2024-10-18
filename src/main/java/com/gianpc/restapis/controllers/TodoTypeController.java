@@ -3,9 +3,12 @@ package com.gianpc.restapis.controllers;
 import com.gianpc.restapis.domains.TodoType;
 import com.gianpc.restapis.services.TodoTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController // Combina @Controller y @ResponseBody
 @RequestMapping("/api/todoType") // Mapea todas las peticiones a /api/todoType a este controlador
@@ -52,6 +55,12 @@ public class TodoTypeController{
         }catch (Exception e){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    // este metodo obtiene una lista paginada y ordenada de objetos TodoType
+    @GetMapping()
+    public List<TodoType> findAll(@RequestParam String sort, @RequestParam String order, @RequestParam int pageNumber, @RequestParam int numOfRecords){
+        return todoTypeService.findAll(sort, Sort.Direction.fromString(order), pageNumber, numOfRecords);
     }
 
 }
