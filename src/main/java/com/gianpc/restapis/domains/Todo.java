@@ -23,7 +23,7 @@ public class Todo {
 
     @JsonIgnore
     private String description;
-    private boolean done;
+    private boolean done; // 1 = true, 0 = False
 
     @NotNull
     @JsonFormat(pattern = "dd/MM/yyyy hh:mm")

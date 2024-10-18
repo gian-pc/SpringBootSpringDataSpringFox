@@ -9,4 +9,7 @@
 ## Clase 02
 1. Configuración H2
 2. De Clase a Entidades
-3. Implementación de las interfaces
+3. Implementando CRUD con Spring Data 
+   - Implementación de las interfaces
+   - Implementación de los servicios
+5. Finders - JPA
