@@ -3,6 +3,7 @@ package com.gianpc.restapis.controllers;
 import com.gianpc.restapis.domains.Todo;
 import com.gianpc.restapis.services.TodoService;
 import com.gianpc.restapis.services.TodoTypeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class TodoController {
     }
 
     @PostMapping
-    public Todo create(@RequestBody Todo todo){
+    public Todo create(@Valid @RequestBody Todo todo){ // @Valid valida el objeto Todo para que cumpla con las restricciones
         return todoService.create(todo);
     }
 
@@ -50,7 +51,6 @@ public class TodoController {
     }
 
     // este metodo obtiene una lista paginada y ordenada de objetos Todo
-    // curl "http://localhost:8080/api/todo?sort=id&order=asc&pageNumber=0&numOfRecords=5"
     @GetMapping()
     public List<Todo> findAll(@RequestParam String sort, @RequestParam String  order, @RequestParam int pageNumber, @RequestParam int numOfRecords){
         return todoService.findAll(sort, Sort.Direction.fromString(order), pageNumber, numOfRecords);

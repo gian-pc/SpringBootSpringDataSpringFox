@@ -1,0 +1,17 @@
+Con Paginación
+==============
+curl "http://localhost:8080/api/todo?sort=id&order=asc&pageNumber=0&numOfRecords=2"
+
+
+Validación
+==========
+
+Hacemos una petición para que falle y se active la validación
+curl --location --request POST 'http://localhost:8080/api/todo' \
+--header 'Content-Type: application/json' \
+--data '{
+    "dateCreated": "09/01/2022 15:20",
+    "dueDate": "10/01/2022 16:00"
+    }'
+
+

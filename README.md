@@ -20,3 +20,4 @@
    - Finders
    - Query Methods
    - Named Queries
+2. Validaciones

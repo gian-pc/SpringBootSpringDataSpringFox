@@ -2,6 +2,7 @@ package com.gianpc.restapis.controllers;
 
 import com.gianpc.restapis.domains.TodoType;
 import com.gianpc.restapis.services.TodoTypeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ public class TodoTypeController{
     }
 
     @PostMapping(consumes = {"application/json", "application/xml"}, produces = {"application/json", "application/xml"})
-    public TodoType create(@RequestBody TodoType todoType){
+    public TodoType create(@RequestBody @Valid TodoType todoType){ // @Valid valida el objeto TodoType para que cumpla con las restricciones
         return todoTypeService.create(todoType);
     }
 
