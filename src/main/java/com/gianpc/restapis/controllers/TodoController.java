@@ -50,11 +50,10 @@ public class TodoController {
     }
 
     // este metodo obtiene una lista paginada y ordenada de objetos Todo
+    // curl "http://localhost:8080/api/todo?sort=id&order=asc&pageNumber=0&numOfRecords=5"
     @GetMapping()
     public List<Todo> findAll(@RequestParam String sort, @RequestParam String  order, @RequestParam int pageNumber, @RequestParam int numOfRecords){
         return todoService.findAll(sort, Sort.Direction.fromString(order), pageNumber, numOfRecords);
     }
-
-
 
 }
