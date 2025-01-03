@@ -48,6 +48,12 @@ public interface TodoRepository extends CrudRepository<Todo, Long>, PagingAndSor
     List<Todo> fetchTodos(Date dateCreated, Date dueDate);
 
 
+    // ------ Ahora ya puedo integrar mis Named Queries  en Spring Data --------
+    List<Todo> fetchAllDone();
+
+    List<Todo> fetchAllByName(String title);
+
+
 
 }
 

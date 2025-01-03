@@ -11,7 +11,12 @@ import java.util.Date;
 
 @Data
 @Entity
-//@Table(name = "T_TODOS")
+
+// selecciona todos los objetos Todo donde el campo done es verdadero.
+@NamedQuery(name = "Todo.fetchAllDone", query = "SELECT t FROM Todo t WHERE t.done = true")
+
+// selecciona todos los objetos Todo donde el campo title es igual al valor dado.
+@NamedQuery(name = "Todo.fetchAllByName", query = "SELECT t FROM Todo t WHERE t.title = ?1")
 public class Todo {
 
     @Id
