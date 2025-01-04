@@ -3,10 +3,12 @@ package com.gianpc.restapis.domains;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.gianpc.restapis.eventos.TodoCreationEvent;
 import com.gianpc.restapis.utils.validators.TitleConstraint;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import org.springframework.data.domain.AbstractAggregateRoot;
 
 import java.util.Date;
 
@@ -18,7 +20,7 @@ import java.util.Date;
 
 // selecciona todos los objetos Todo donde el campo title es igual al valor dado.
 @NamedQuery(name = "Todo.fetchAllByName", query = "SELECT t FROM Todo t WHERE t.title = ?1")
-public class Todo {
+public class Todo extends AbstractAggregateRoot<Todo> { // AbstractAggregateRoot es una clase de Spring para manejar eventos de dominio
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // IDENTITY, SEQUENCE, TABLE
@@ -49,4 +51,9 @@ public class Todo {
     @ManyToOne
     @JsonProperty("type")
     private TodoType todoType;
+
+    // una vez que se guarda un objeto Todo, se lanza el evento TodoCreationEvent
+    public void afterSave() {
+        registerEvent(new TodoCreationEvent());
+    }
 }

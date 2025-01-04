@@ -23,3 +23,5 @@
 2. Validaciones
    - Bean Validation usando Hibernate Validator
    - Validaciones personalizadas
+3. Eventos del dominio
+   - Concepto: Cuando genere un nuevo Todo que hay un evento que diga "Se ha creado un Todo"
