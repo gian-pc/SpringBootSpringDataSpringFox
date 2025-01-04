@@ -27,3 +27,5 @@
    - Concepto: Cuando genere un nuevo Todo que hay un evento que diga "Se ha creado un Todo"
    - Escuchador de eventos: 
      - Vamos a implementar en la capa service un escuchador de eventos para que sea notificado cuando un objeto Todo es guardado a través del TodoRepository
+4. Spring Data REST
+   - Agregamos las dependencias de Spring Data REST
