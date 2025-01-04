@@ -3,6 +3,7 @@ package com.gianpc.restapis.domains;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.gianpc.restapis.utils.validators.TitleConstraint;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -23,7 +24,8 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.AUTO) // IDENTITY, SEQUENCE, TABLE
     private Long id;
 
-    @NotNull
+    // @NotNull
+    @TitleConstraint // Validación personalizada
     private String title;
 
     @JsonIgnore
