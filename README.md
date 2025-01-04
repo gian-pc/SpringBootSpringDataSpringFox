@@ -29,3 +29,4 @@
      - Vamos a implementar en la capa service un escuchador de eventos para que sea notificado cuando un objeto Todo es guardado a través del TodoRepository
 4. Spring Data REST
    - Agregamos las dependencias de Spring Data REST
+   - Agregar repositorio REST para la entidad Todo y TodoType
