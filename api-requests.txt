@@ -23,3 +23,13 @@ curl --location --request POST 'http://localhost:8080/api/todo' \
     "dueDate": "10/01/2022 16:00"
     }'
 
+
+Probando si el service se entera que se ha creado un nuevo todo
+creamos un nuevo todo: Do Laundary
+curl --location --request POST 'http://localhost:8080/api/todo' \
+--header 'Content-Type: application/json' \
+--data '{
+    "title": "Do Laundary",
+    "dateCreated": "09/01/2022 15:20",
+    "dueDate": "10/01/2022 16:00"
+    }'

@@ -1,6 +1,7 @@
 package com.gianpc.restapis.services;
 
 import com.gianpc.restapis.domains.Todo;
+import com.gianpc.restapis.eventos.TodoCreationEvent;
 import com.gianpc.restapis.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -8,6 +9,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import java.util.Date;
 import java.util.List;
@@ -18,13 +22,23 @@ public class TodoService {
 
     private TodoRepository todoRepository;
 
+
+
     // Constructor
     @Autowired
     public TodoService(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
 
+    // Cuándo alguién graba un Todo ¿cómo se entera el service que sea grabado ?
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+    public void handleTodoCreationEvent(TodoCreationEvent todoCreationEvent){
+        System.out.println("Handled TodoCreationEvent.......");
+    }
+
+    @Transactional
     public Todo create(Todo todo) {
+        todo.afterSave(); // registrar el TodoCreationEvent para el objeto Todo creado en la base de datos (después de que se haya guardado)
         return todoRepository.save(todo);
     }
 
