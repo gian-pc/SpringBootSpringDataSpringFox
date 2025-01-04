@@ -33,3 +33,10 @@ curl --location --request POST 'http://localhost:8080/api/todo' \
     "dateCreated": "09/01/2022 15:20",
     "dueDate": "10/01/2022 16:00"
     }'
+
+Spring Data Rest
+================
+
+curl 'http://localhost:8080/todos?page=0&size=3&sort=id,desc'
+
+curl 'http://localhost:8080/todoTypes?page=0&size=3&sort=code,desc'
