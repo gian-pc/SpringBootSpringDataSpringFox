@@ -30,3 +30,11 @@
 4. Spring Data REST
    - Agregamos las dependencias de Spring Data REST
    - Agregar repositorio REST para la entidad Todo y TodoType
+5. Etags: 
+   - Concepto: Un etags es un header que viene en el response y que determina una version específica de un recurso
+   - Para que lo usan: 
+     - Para que el servidor web No envie una respuesta completa si el contenido no ha cambiado
+     - Cache web
+     - Ahorro de ancho de banda
+    - Implementación:
+      - Hay que usar filtros, porque ese filtro va a generar un etag basado en el contenido de la respuesta y agrega al header de cada request

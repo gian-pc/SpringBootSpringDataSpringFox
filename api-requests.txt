@@ -1,3 +1,12 @@
+Registro
+========
+curl --location --request POST 'http://localhost:8080/api/todoType' \
+--header 'Content-Type: application/json' \
+--data '{
+    "code": "PERSONAL",
+    "description": "Todo for Personal Work", "dateCreated": "09/01/2022 15:20"
+    }'
+
 Con Paginación
 ==============
 curl "http://localhost:8080/api/todo?sort=id&order=asc&pageNumber=0&numOfRecords=2"
@@ -40,3 +49,34 @@ Spring Data Rest
 curl 'http://localhost:8080/todos?page=0&size=3&sort=id,desc'
 
 curl 'http://localhost:8080/todoTypes?page=0&size=3&sort=code,desc'
+
+
+Etag
+====
+
+Primero creamos un todoType
+curl --location --request POST 'http://localhost:8080/api/todoType' \
+--header 'Content-Type: application/json' \
+--data '{
+    "code": "PERSONAL",
+    "description": "Todo for Personal Work", "dateCreated": "09/01/2022 15:20"
+    }'
+
+Luego consultamos el todoType para ver si se ha generado el etag
+curl -i http://localhost:8080/todoTypes/PERSONAL
+
+Esto es para verificar si el objeto con el id PERSONAL ha cambiado
+curl -H 'If-None-Match: "09dff9a8ff4d5101bb6bab4bdcedc0d7a"' -i http://localhost:8080/todoTypes/PERSONAL
+si responder 304 significa que no ha cambiado el objeto entonces el servidor web va ahorrar el ancho de banda no enviando el objeto en formato json
+
+Modificamos el todoType
+curl --location --request PUT 'http://localhost:8080/todoTypes/PERSONAL' \
+--header 'Content-Type: application/json' \
+--data '{
+    "code": "PERSONAL",
+    "description": "Todo for Personal Work -updated"
+    }'
+
+Nuevamente lo comprobamos si el objeto ha cambiado
+curl -H 'If-None-Match: "09dff9a8ff4d5101bb6bab4bdcedc0d7a"' -i http://localhost:8080/todoTypes/PERSONAL
+Respuesta: Nos devuelve otro etag y el objeto en formato json porque ha cambiado
