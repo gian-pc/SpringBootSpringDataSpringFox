@@ -38,3 +38,8 @@
      - Ahorro de ancho de banda
     - Implementación:
       - Hay que usar filtros, porque ese filtro va a generar un etag basado en el contenido de la respuesta y agrega al header de cada request
+
+## Clase 04
+1. AOP
+   - El controller nunca se entera que el Aspect lo esta obsevando
+   - El Aspect esta pendiente de lo que que el controller esta haciendo

@@ -80,3 +80,8 @@ curl --location --request PUT 'http://localhost:8080/todoTypes/PERSONAL' \
 Nuevamente lo comprobamos si el objeto ha cambiado
 curl -H 'If-None-Match: "09dff9a8ff4d5101bb6bab4bdcedc0d7a"' -i http://localhost:8080/todoTypes/PERSONAL
 Respuesta: Nos devuelve otro etag y el objeto en formato json porque ha cambiado
+
+AOP
+======
+Probando el aspecto de log
+curl http://localhost:8080/api/todo/1

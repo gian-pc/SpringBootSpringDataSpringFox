@@ -43,7 +43,6 @@ public class TodoService {
     }
 
     public Todo findById(Long id)   {
-
        Optional<Todo> todoResult = todoRepository.findById(id);
        if(todoResult.isPresent()){
            return todoResult.get();

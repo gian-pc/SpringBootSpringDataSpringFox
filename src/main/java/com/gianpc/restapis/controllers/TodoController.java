@@ -3,6 +3,7 @@ package com.gianpc.restapis.controllers;
 import com.gianpc.restapis.domains.Todo;
 import com.gianpc.restapis.services.TodoService;
 import com.gianpc.restapis.services.TodoTypeService;
+import com.gianpc.restapis.utils.aop.LogMethodDetails;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -31,8 +32,14 @@ public class TodoController {
     }
 
     @GetMapping("/{id}")
-    public Todo read(@PathVariable("id") Long id){
-        return todoService.findById(id);
+    @LogMethodDetails
+    public ResponseEntity<Todo> read(@PathVariable("id") Long id){
+        Todo todo = todoService.findById(id);
+        if(null != todo){
+            return new ResponseEntity<>(todo, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PutMapping
@@ -52,6 +59,7 @@ public class TodoController {
 
     // este metodo obtiene una lista paginada y ordenada de objetos Todo
     @GetMapping()
+    @LogMethodDetails // queremos saber cuándo se llama a este metodo y cuánto tiempo tarda en ejecutarse
     public List<Todo> findAll(@RequestParam String sort, @RequestParam String  order, @RequestParam int pageNumber, @RequestParam int numOfRecords){
         return todoService.findAll(sort, Sort.Direction.fromString(order), pageNumber, numOfRecords);
     }
