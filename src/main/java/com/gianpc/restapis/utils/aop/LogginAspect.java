@@ -3,6 +3,7 @@ package com.gianpc.restapis.utils.aop;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -32,5 +33,11 @@ public class LogginAspect {
         long executionTime = System.currentTimeMillis() - start;
         logger.info(joinPoint.getSignature() + " executed in " + executionTime + "ms" + " with params " + Arrays.toString(joinPoint.getArgs()));
         return proceed;
+    }
+
+    // El AfterThrowing se ejecuta cuando hay una excepcion
+    @AfterThrowing(pointcut = "@annotation(com.gianpc.restapis.utils.aop.LogMethodDetails)", throwing = "e")
+    public void logException(JoinPoint jp, Exception e) {
+        logger.error("Exception in executing: " + jp.getSignature() + " : " + e.getCause());
     }
 }

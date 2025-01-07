@@ -85,3 +85,9 @@ AOP
 ======
 Probando el aspecto de log
 curl http://localhost:8080/api/todo/1
+
+En este caso no hay excepción
+curl "http://localhost:8080/api/todo?sort=id&order=asc&pageNumber=0&numOfRecords=2"
+
+Para que haya excepción me equivoco con el parámetro "asc" por "pepito"
+curl "http://localhost:8080/api/todo?sort=id&order=pepito&pageNumber=0&numOfRecords=2"

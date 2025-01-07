@@ -43,3 +43,4 @@
 1. AOP
    - El controller nunca se entera que el Aspect lo esta obsevando
    - El Aspect esta pendiente de lo que que el controller esta haciendo
+2. Manejo de Excepciones con AOP
