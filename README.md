@@ -44,3 +44,5 @@
    - El controller nunca se entera que el Aspect lo esta obsevando
    - El Aspect esta pendiente de lo que que el controller esta haciendo
 2. Manejo de Excepciones con AOP
+3. AOP Introductions
+   - AuditLoggable es el que va revelar que metodos de la clase TodoService van a ser auditados 

@@ -91,3 +91,16 @@ curl "http://localhost:8080/api/todo?sort=id&order=asc&pageNumber=0&numOfRecords
 
 Para que haya excepción me equivoco con el parámetro "asc" por "pepito"
 curl "http://localhost:8080/api/todo?sort=id&order=pepito&pageNumber=0&numOfRecords=2"
+
+Probando AuditLoggable
+=======================
+
+curl --location --request POST 'http://localhost:8080/api/todo' \
+--header 'Content-Type: application/json' \
+--data '{
+    "title": "My Laundary",
+    "dateCreated": "09/01/2022 15:20",
+    "dueDate": "10/01/2022 16:00"
+    }'
+
+El AuditLoggable: Inserting Todo

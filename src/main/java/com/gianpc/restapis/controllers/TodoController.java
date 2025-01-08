@@ -3,6 +3,7 @@ package com.gianpc.restapis.controllers;
 import com.gianpc.restapis.domains.Todo;
 import com.gianpc.restapis.services.TodoService;
 import com.gianpc.restapis.services.TodoTypeService;
+import com.gianpc.restapis.utils.aop.AuditLoggable;
 import com.gianpc.restapis.utils.aop.LogMethodDetails;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,7 @@ public class TodoController {
 
     @PostMapping
     public Todo create(@Valid @RequestBody Todo todo){ // @Valid valida el objeto Todo para que cumpla con las restricciones
+        ((AuditLoggable)todoService).auditLog(todo, "INSERT");
         return todoService.create(todo);
     }
 
@@ -44,6 +46,7 @@ public class TodoController {
 
     @PutMapping
     public Todo update(@RequestBody Todo todo){
+        ((AuditLoggable)todoService).auditLog(todo, "UPDATE");
         return todoService.update(todo);
     }
 
