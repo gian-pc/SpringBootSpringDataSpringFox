@@ -104,3 +104,11 @@ curl --location --request POST 'http://localhost:8080/api/todo' \
     }'
 
 El AuditLoggable: Inserting Todo
+
+
+Testing
+=======
+
+./gradlew test --tests "com.gianpc.restapis.unit.TodoTypeServiceTest.whenReadTodoType_thenReturnTodoType"
+
+./gradlew test --tests "com.gianpc.restapis.unit.TodoServiceTest.whenUpdate_thenReturnTodo"
